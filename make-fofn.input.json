@@ -1,0 +1,4 @@
+{
+  "make_fofn.fofn_name": "String",
+  "make_fofn.input_files": "Array[String]"
+}

@@ -1,0 +1,5 @@
+{
+  "GenerateSampleMap.file_paths": "Array[String]",
+  "GenerateSampleMap.sample_map_name": "String",
+  "GenerateSampleMap.sample_names": "Array[String]"
+}
