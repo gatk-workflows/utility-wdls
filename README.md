@@ -23,7 +23,9 @@ Creates a text file listing the file paths provided as input.
 ### Outputs :
  - sample map file
 
-## Software version notes :
+---
+
+### Software version notes :
 - Cromwell version support 
   - Successfully tested on v53 
 
