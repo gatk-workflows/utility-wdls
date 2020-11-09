@@ -1,0 +1,12 @@
+version: 1.2
+workflows:
+   - name: make-fofn
+     subclass: WDL
+     primaryDescriptorPath: /make-fofn.wdl
+     testParameterFiles:
+     -  /make-fofn.input.json
+   - name: generate-sample-map
+     subclass: WDL
+     primaryDescriptorPath: /generate-sample-map.wdl
+     testParameterFiles:
+     -  /generate-sample-map.input.json
