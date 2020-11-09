@@ -13,7 +13,7 @@ Creates a text file listing the file paths provided as input.
 
 ## generate-sample-map
 ### Purpose:
- Generate a sample_map file, which can be used for JointGenotyping workflow
+ Generate a sample_map file, which can be used for JointGenotyping workflow.
 
 ### Requirements/expectations :
  - An array of file paths
