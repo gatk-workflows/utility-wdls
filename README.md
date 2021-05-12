@@ -13,7 +13,7 @@ Creates a text file listing the file paths provided as input.
 
 ## generate-sample-map
 ### Purpose:
- Generate a sample_map file, which can be used for JointGenotyping workflow.
+Generate a sample_map file, which can be used for JointGenotyping workflow.
 
 ### Requirements/expectations :
  - An array of file paths
@@ -22,6 +22,18 @@ Creates a text file listing the file paths provided as input.
 
 ### Outputs :
  - sample map file
+
+## copy-files-to-directory
+### Purpose: 
+This workflow copies an array of files from a gs bucket to another specfied gs bucket
+
+### Requirements/expectations :
+ - Array[String] files_2_copy = Files to copy
+ - String output_gs_dir = Directory to copy files to
+
+### Outputs :
+ -  File output_text_file = The bash script used to copy files
+ -  Array[String] new_file_paths = Files contained in the output bucket
 
 ---
 

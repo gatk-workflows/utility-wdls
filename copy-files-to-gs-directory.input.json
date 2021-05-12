@@ -1,0 +1,6 @@
+{
+  "CopyFiles2Directory.output_gs_dir": "String",
+  "CopyFiles2Directory.files_2_copy": "Array[String]",
+  "CopyFiles2Directory.dir_name": "String (optional, default = \"\")"
+}
+
