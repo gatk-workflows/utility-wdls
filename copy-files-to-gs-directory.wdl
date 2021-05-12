@@ -24,7 +24,7 @@ version 1.0
 ## for detailed licensing information pertaining to the included programs.
 
 workflow CopyFiles2Directory{
-	input{
+    input{
       Array[String] files_2_copy
       String output_gs_dir
       String dir_name = ""
@@ -35,7 +35,7 @@ workflow CopyFiles2Directory{
     String dir_name_slash = if add_dir_name then dir_name + "/" else dir_name
     
 call copyFile{
-	input:
+    input:
       files_2_copy = files_2_copy,
       output_gs_dir = output_gs_dir + dir_name_slash
 }
@@ -46,33 +46,34 @@ output{
 }
 
 task copyFile{
-	input{
+    input{
       Array[String] files_2_copy
       String output_gs_dir
     }
     
-	command<<<
-		set -eo pipefail
+    command<<<
+        set -eo pipefail
 
-		# Create a file with each line as the file to copy
-		cp ~{write_lines(files_2_copy)} list_of_files.txt
-		# Add gs copy command to the begining of each line
-		sed -i -e 's|^|gsutil cp |' list_of_files.txt
-		# Add directory to copy files to
-		sed -i -e 's|$| ~{output_gs_dir}|' list_of_files.txt
-		
-		# Turn txt file to executable
-		cp list_of_files.txt list_of_files.sh
-		
-		source list_of_files.sh
+        # Create a file with each line as the file to copy
+        cp ~{write_lines(files_2_copy)} list_of_files.txt
+        # Add gs copy command to the begining of each line
+        sed -i -e 's|^|gsutil cp |' list_of_files.txt
+        # Add directory to copy files to
+        sed -i -e 's|$| ~{output_gs_dir}|' list_of_files.txt
+        
+        # Convert text file to executable
+        cp list_of_files.txt list_of_files.sh
+        
+        source list_of_files.sh
 
-		gsutil ls ~{output_gs_dir} >> new_file_paths.txt
+        gsutil ls ~{output_gs_dir} >> new_file_paths.txt
     >>>
-	output{
-		File output_text_file = "list_of_files.txt"
+    output{
+        File output_text_file = "list_of_files.txt"
         Array[String] new_file_paths = read_lines("new_file_paths.txt")
     }
-	runtime {
-		docker: "gcr.io/google.com/cloudsdktool/cloud-sdk:latest"
+    runtime {
+        docker: "gcr.io/google.com/cloudsdktool/cloud-sdk:latest"
     }
 }
+
