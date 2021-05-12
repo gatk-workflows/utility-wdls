@@ -10,3 +10,8 @@ workflows:
      primaryDescriptorPath: /generate-sample-map.wdl
      testParameterFiles:
      -  /generate-sample-map.input.json
+   - name: copy-files-to-gs-directory 
+     subclass: WDL
+     primaryDescriptorPath: /copy-files-to-gs-directory.wdl
+     testParameterFiles:
+     -  /copy-files-to-gs-directory.input.json
